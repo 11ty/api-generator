@@ -28,6 +28,8 @@ async function handler(event, context) {
         statusCode: 200,
         headers: {
           "content-type": image.format,
+          "x-generator-name": generator.name,
+          "x-generator-version": generator.version,
         },
         body: image.body,
         isBase64Encoded: true
