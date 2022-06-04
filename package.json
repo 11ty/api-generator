@@ -22,6 +22,7 @@
     "ava": "^4.3.0"
   },
   "dependencies": {
+    "@11ty/eleventy-img": "^2.0.1",
     "@netlify/functions": "^1.0.0",
     "cheerio": "^1.0.0-rc.11",
     "node-fetch": "^2.6.7"

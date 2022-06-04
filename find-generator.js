@@ -1,5 +1,6 @@
 const fetch = require("node-fetch");
 const cheerio = require("cheerio");
+const EleventyImage = require("@11ty/eleventy-img");
 
 class FindGenerator {
   constructor(url) {
@@ -30,7 +31,7 @@ class FindGenerator {
   }
 
   // <meta name="generator" content="Eleventy v2.0.0">
-  findMetaGenerator() {
+  findData() {
     let metas = this.$("meta[name='generator']");
 
     for(let meta of metas) {
@@ -41,6 +42,37 @@ class FindGenerator {
         name,
         version
       }
+    }
+  }
+
+  getImageUrl(generatorInfo) {
+    let url;
+    if(generatorInfo && generatorInfo.name.toLowerCase() === "eleventy") {
+      url = "https://www.11ty.dev/";
+    }
+
+    if(!url) {
+      throw new Error("No indieweb avatar known for generator: " + generatorInfo.name);
+    }
+
+    return `https://v1.indieweb-avatar.11ty.dev/${encodeURIComponent(url)}/`;
+  }
+
+  async getImage(generatorInfo, width) {
+    let imageUrl = this.getImageUrl(generatorInfo);
+
+    let stats = await EleventyImage(imageUrl, {
+      widths: [width],
+      formats: ["auto"],
+      dryRun: true,
+    });
+
+    let format = Object.keys(stats).pop();
+    let stat = stats[format][0];
+
+    return {
+      format: format,
+      body: stat.buffer.toString("base64"),
     }
   }
 }
