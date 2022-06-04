@@ -16,3 +16,10 @@ URLs have the formats:
 ```
 
 * `url` must be URI encoded.
+
+## Examples
+
+* zachleat.com is built with: <img src="https://generator.11ty.dev/image/https%3A%2F%2Fwww.zachleat.com/">
+* 11ty.dev is built with: <img src="https://generator.11ty.dev/image/https%3A%2F%2Fwww.11ty.dev/">
+* gatsbyjs.com is built with: <img src="https://generator.11ty.dev/image/https%3A%2F%2Fwww.gatsbyjs.com/">
+* littlecaesars.com is built with: <img src="https://generator.11ty.dev/image/https%3A%2F%2Flittlecaesars.com%2Fen-us%2F/">
