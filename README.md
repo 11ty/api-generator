@@ -19,7 +19,8 @@ URLs have the formats:
 
 ## Examples
 
-* zachleat.com is built with <img src="https://v1.generator.11ty.dev/image/https%3A%2F%2Fwww.zachleat.com/">
-* 11ty.dev is built with: <img src="https://v1.generator.11ty.dev/image/https%3A%2F%2Fwww.11ty.dev/">
-* gatsbyjs.com is built with: <img src="https://v1.generator.11ty.dev/image/https%3A%2F%2Fwww.gatsbyjs.com/">
-* littlecaesars.com is built with: <img src="https://v1.generator.11ty.dev/image/https%3A%2F%2Flittlecaesars.com%2Fen-us%2F/">
+* See the “Built With” column on https://www.speedlify.dev/ssg/
+* zachleat.com is built with <img src="https://v1.generator.11ty.dev/image/https%3A%2F%2Fwww.zachleat.com/" width="30" height="30" alt="Eleventy">
+* 11ty.dev is built with: <img src="https://v1.generator.11ty.dev/image/https%3A%2F%2Fwww.11ty.dev/" width="30" height="30" alt="Eleventy">
+* gatsbyjs.com is built with: <img src="https://v1.generator.11ty.dev/image/https%3A%2F%2Fwww.gatsbyjs.com/" width="30" height="30" alt="Gatsby">
+* littlecaesars.com is built with: <img src="https://v1.generator.11ty.dev/image/https%3A%2F%2Flittlecaesars.com%2Fen-us%2F/" width="30" height="30" alt="Gatsby">
