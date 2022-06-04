@@ -58,7 +58,8 @@ class FindGenerator {
       url = "https://gohugo.io/";
     } else if(name) {
       // found a generator name but was not supported
-      return `./redx.svg`
+      // notably this is different than no generator found (error state is a transparent image)
+      return `./x.svg`
     }
 
     if(!url) {

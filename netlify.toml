@@ -1,6 +1,6 @@
 [functions]
 directory = "functions"
-included_files = ["redx.svg"]
+included_files = ["x.svg"]
 
 [[redirects]]
 from = "/*"
