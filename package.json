@@ -1,0 +1,28 @@
+{
+  "name": "eleventy-api-generator",
+  "version": "1.0.0",
+  "description": "Find the <meta name='generator'> value from a web site URL.",
+  "main": "find-generator.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/11ty/api-generator.git"
+  },
+  "author": {
+    "name": "Zach Leatherman",
+    "email": "zachleatherman@gmail.com",
+    "url": "https://zachleat.com/"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/11ty/api-generator/issues"
+  },
+  "homepage": "https://github.com/11ty/api-generator#readme",
+  "devDependencies": {
+    "ava": "^4.3.0"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.11",
+    "node-fetch": "^2.6.7"
+  }
+}
