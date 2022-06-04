@@ -1,0 +1,8 @@
+[functions]
+directory = "functions"
+
+[[redirects]]
+from = "/*"
+to = "/.netlify/builders/generator"
+status = 200
+force = true
