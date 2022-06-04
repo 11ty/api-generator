@@ -14,6 +14,7 @@ const Generators = {
   gridsome: "https://gridsome.org/",
   vuepress: "https://vuepress.vuejs.org/",
   hexo: "https://hexo.io/",
+  phenomic: "http://www.phenomic.io/",
 }
 
 class FindGenerator {
