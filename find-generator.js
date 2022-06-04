@@ -6,7 +6,9 @@ const Generators = {
   eleventy: "https://www.11ty.dev/",
   "11ty": "https://www.11ty.dev/",
   hugo: "https://gohugo.io/",
-  gatsby: "https://www.gatsbyjs.com/"
+  gatsby: "https://www.gatsbyjs.com/",
+  wordpress: "https://wordpress.com/",
+  silex: "https://www.silex.me/",
 }
 
 class FindGenerator {
