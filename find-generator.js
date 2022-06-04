@@ -9,6 +9,11 @@ const Generators = {
   gatsby: "https://www.gatsbyjs.com/",
   wordpress: "https://wordpress.com/",
   silex: "https://www.silex.me/",
+  jekyll: "https://jekyllrb.com/",
+  docusaurus: "https://docusaurus.io/",
+  gridsome: "https://gridsome.org/",
+  vuepress: "https://vuepress.vuejs.org/",
+  hexo: "https://hexo.io/",
 }
 
 class FindGenerator {
