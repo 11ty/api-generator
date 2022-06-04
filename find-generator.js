@@ -36,7 +36,9 @@ class FindGenerator {
 
     for(let meta of metas) {
       let value = meta.attribs.content;
-      let [name, version] = value.split(" v").map(entry => entry.trim());
+      let info = value.split(" ").map(entry => entry.trim());
+      let version = info.pop();
+      let name = info.join(" ");
 
       return {
         name,
@@ -47,8 +49,11 @@ class FindGenerator {
 
   getImageUrl(generatorInfo) {
     let url;
-    if(generatorInfo && generatorInfo.name.toLowerCase() === "eleventy") {
+    let name = generatorInfo && generatorInfo.name.toLowerCase();
+    if(name === "eleventy") {
       url = "https://www.11ty.dev/";
+    } else if(name === "gatsby") {
+      url = "https://www.gatsbyjs.com/";
     }
 
     if(!url) {
