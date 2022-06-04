@@ -1,9 +1,5 @@
-[functions]
-directory = "functions"
-included_files = ["redx.svg"]
-
 [[redirects]]
 from = "/*"
-to = "/.netlify/builders/generator"
-status = 200
+to = "https://v1.generator.11ty.dev/:splat"
+status = 301
 force = true
