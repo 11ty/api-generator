@@ -2,6 +2,13 @@ const fetch = require("node-fetch");
 const cheerio = require("cheerio");
 const EleventyImage = require("@11ty/eleventy-img");
 
+const Generators = {
+  eleventy: "https://www.11ty.dev/",
+  "11ty": "https://www.11ty.dev/",
+  hugo: "https://gohugo.io/",
+  gatsby: "https://www.gatsbyjs.com/"
+}
+
 class FindGenerator {
   constructor(url) {
     this.url = url;
@@ -36,41 +43,36 @@ class FindGenerator {
 
     for(let meta of metas) {
       let value = meta.attribs.content;
-      let info = value.split(" ").map(entry => entry.trim());
-      let version = info.pop();
-      let name = info.join(" ");
+      return value;
+    }
+  }
 
-      return {
-        name,
-        version
+  getImageUrl(generatorName) {
+    generatorName = generatorName.toLowerCase();
+    
+    let url;
+    for(let key in Generators) {
+      if(generatorName.includes(key)) {
+        url = Generators[key];
+        break;
       }
     }
-  }
 
-  getImageUrl(generatorInfo) {
-    let url;
-    let name = generatorInfo && generatorInfo.name.toLowerCase();
-    if(name === "eleventy") {
-      url = "https://www.11ty.dev/";
-    } else if(name === "gatsby") {
-      url = "https://www.gatsbyjs.com/";
-    } else if(name === "hugo") {
-      url = "https://gohugo.io/";
-    } else if(name) {
+    if(url) {
+      return `https://v1.indieweb-avatar.11ty.dev/${encodeURIComponent(url)}/`;
+    } else {
       // found a generator name but was not supported
-      // notably this is different than no generator found (error state is a transparent image)
-      return `./x.svg`
-    }
+      if(generatorName) {
+        // notably this is different than no generator found (error state is a transparent image)
+        return "./x.svg";
+      }
 
-    if(!url) {
       throw new Error("No indieweb avatar known for generator: " + generatorInfo.name);
     }
-
-    return `https://v1.indieweb-avatar.11ty.dev/${encodeURIComponent(url)}/`;
   }
 
-  async getImage(generatorInfo, width) {
-    let imageUrl = this.getImageUrl(generatorInfo);
+  async getImage(generatorName, width) {
+    let imageUrl = this.getImageUrl(generatorName);
 
     let stats = await EleventyImage(imageUrl, {
       widths: [width],

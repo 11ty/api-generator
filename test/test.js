@@ -2,21 +2,20 @@ const test = require("ava");
 const FindGenerator = require("../find-generator.js");
 
 test("Get info from 11ty.dev", async t => {
-  let generator = new FindGenerator("https://www.11ty.dev/");
-  await generator.fetch();
-  let {name, version} = generator.findData();
+  let g = new FindGenerator("https://www.11ty.dev/");
+  await g.fetch();
 
-  t.is(name, "Eleventy");
-  t.truthy(version);
+  let content = g.findData();
+  t.true(content.startsWith("Eleventy"));
 });
 
 test("Get image from 11ty.dev", async t => {
   let g = new FindGenerator("https://www.11ty.dev/");
   await g.fetch();
-  let generator = g.findData();
-  let image = await g.getImage(generator);
+  let content = g.findData();
+  t.true(content.startsWith("Eleventy"));
 
-  t.is(generator.name, "Eleventy");
+  let image = await g.getImage(content);
   t.truthy(image.body);
 });
 
@@ -24,12 +23,10 @@ test("Image/info for gatsbyjs.com", async t => {
   let g = new FindGenerator("https://www.gatsbyjs.com/");
   await g.fetch();
 
-  let generator = g.findData();
-  let image = await g.getImage(generator);
+  let content = g.findData();
+  t.true(content.startsWith("Gatsby"));
 
-  t.is(generator.name, "Gatsby");
-  t.truthy(generator.version);
-
+  let image = await g.getImage(content);
   t.truthy(image.body);
 });
 
@@ -37,11 +34,9 @@ test("Image/info for gohugo.io", async t => {
   let g = new FindGenerator("https://gohugo.io/");
   await g.fetch();
 
-  let generator = g.findData();
-  let image = await g.getImage(generator);
+  let content = g.findData();
+  t.true(content.startsWith("Hugo"));
 
-  t.is(generator.name, "Hugo");
-  t.truthy(generator.version);
-
+  let image = await g.getImage(content);
   t.truthy(image.body);
 });
