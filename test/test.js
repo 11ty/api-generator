@@ -32,3 +32,16 @@ test("Image/info for gatsbyjs.com", async t => {
 
   t.truthy(image.body);
 });
+
+test("Image/info for gohugo.io", async t => {
+  let g = new FindGenerator("https://gohugo.io/");
+  await g.fetch();
+
+  let generator = g.findData();
+  let image = await g.getImage(generator);
+
+  t.is(generator.name, "Hugo");
+  t.truthy(generator.version);
+
+  t.truthy(image.body);
+});

@@ -54,6 +54,8 @@ class FindGenerator {
       url = "https://www.11ty.dev/";
     } else if(name === "gatsby") {
       url = "https://www.gatsbyjs.com/";
+    } else if(name === "hugo") {
+      url = "https://gohugo.io/";
     } else if(name) {
       // found a generator name but was not supported
       return `./redx.svg`
