@@ -4,7 +4,6 @@ const FindGenerator = require("../../find-generator.js");
 
 const IMAGE_WIDTH = 60;
 const IMAGE_HEIGHT = 60;
-const FALLBACK_IMAGE_FORMAT = "png";
 
 async function handler(event, context) {
   // e.g. /json/https%3A%2F%2Fwww.11ty.dev%2F/
@@ -27,7 +26,7 @@ async function handler(event, context) {
       return {
         statusCode: 200,
         headers: {
-          "content-type": image.format,
+          "content-type": image.contentType,
           "x-generator-name": generator.name,
           "x-generator-version": generator.version,
         },
