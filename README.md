@@ -4,7 +4,7 @@
 
 A runtime service to returns the avatar of the `<meta name="generator">` used on a web site.
 
-This service only supports 11ty and Gatsby right now, but I will happily merge PRs for others!
+This service only supports a few generators (at time of writing: 11ty, Gatsby, and Hugo), but I will happily merge PRs for others!
 
 ## Usage
 
