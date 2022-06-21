@@ -52,6 +52,8 @@ class FindGenerator {
       let value = meta.attribs.content;
       return value;
     }
+
+    throw new Error("No <meta name='generator' content> element found.");
   }
 
   getImageUrl(generatorName) {
