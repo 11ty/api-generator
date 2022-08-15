@@ -14,6 +14,7 @@ const Generators = {
   gridsome: "https://gridsome.org/",
   vuepress: "https://vuepress.vuejs.org/",
   hexo: "https://hexo.io/",
+  astro: "https://astro.build/",
 }
 
 class FindGenerator {
@@ -58,7 +59,7 @@ class FindGenerator {
 
   getImageUrl(generatorName) {
     generatorName = generatorName.toLowerCase();
-    
+
     let url;
     for(let key in Generators) {
       if(generatorName.includes(key)) {
