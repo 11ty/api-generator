@@ -1,9 +1,0 @@
-[functions]
-directory = "functions"
-included_files = ["x.svg"]
-
-[[redirects]]
-from = "/*"
-to = "/.netlify/builders/generator"
-status = 200
-force = true

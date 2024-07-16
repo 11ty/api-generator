@@ -1,0 +1,15 @@
+{
+	"functions": {
+		"api/generator.js": {
+			"includeFiles": "x.svg"
+		}
+	},
+	"rewrites": [
+		{ "source": "/", "destination": "/api/generator/" },
+		{ "source": "/:path*", "destination": "/api/generator/" },
+		{ "source": "/:path/", "destination": "/api/generator/" },
+		{ "source": "/json/:path/", "destination": "/api/generator/" },
+		{ "source": "/image/:path/", "destination": "/api/generator/" }
+	],
+	"trailingSlash": true
+}

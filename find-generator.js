@@ -1,6 +1,6 @@
-const fetch = require("node-fetch");
-const cheerio = require("cheerio");
-const EleventyImage = require("@11ty/eleventy-img");
+import fetch from "node-fetch";
+import cheerio from "cheerio";
+import EleventyImage from "@11ty/eleventy-img";
 
 const Generators = {
   eleventy: "https://www.11ty.dev/",
@@ -101,4 +101,4 @@ class FindGenerator {
   }
 }
 
-module.exports = FindGenerator;
+export default FindGenerator;

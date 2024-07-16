@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "Find the <meta name='generator'> value from a web site URL.",
   "main": "find-generator.js",
+  "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/11ty/api-generator.git"
+  },
+  "scripts": {
+    "test": "npx ava",
+    "start": "npx vercel dev"
   },
   "author": {
     "name": "Zach Leatherman",
@@ -19,11 +24,11 @@
   },
   "homepage": "https://github.com/11ty/api-generator#readme",
   "devDependencies": {
-    "ava": "^4.3.0"
+    "ava": "^4.3.0",
+    "vercel": "^35.0.0"
   },
   "dependencies": {
     "@11ty/eleventy-img": "^2.0.1",
-    "@netlify/functions": "^1.0.0",
     "cheerio": "^1.0.0-rc.11",
     "node-fetch": "^2.6.7"
   }
