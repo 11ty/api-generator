@@ -11,11 +11,17 @@ export async function GET(request, context) {
   let requestUrl = new URL(request.url);
   let [format, url] = requestUrl.pathname.split("/").filter(entry => !!entry);
 
-  if(!url || url?.endsWith("favicon.ico")) {
-    return;
-  }
-
   url = decodeURIComponent(url);
+
+  if(!url || url?.endsWith("favicon.ico")) {
+    return new Response("{}", {
+      status: 200,
+      headers: {
+        "content-type": "application/json",
+        "cache-control": `public, s-maxage=${ONE_WEEK}, stale-while-revalidate=${ONE_DAY}`
+      }
+    });
+  }
 
   try {
     // output to Function logs
