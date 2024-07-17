@@ -6,21 +6,61 @@ const ONE_WEEK = ONE_DAY*7;
 const IMAGE_WIDTH = 60;
 const IMAGE_HEIGHT = 60;
 
+function isFullUrl(url) {
+  try {
+    new URL(url);
+    return true;
+  } catch(e) {
+    // invalid url OR local path
+    return false;
+  }
+}
+
+function getEmptyImageResponse(errorMessage) {
+  // We need to return 200 here or Firefox won’t display the image
+  // HOWEVER a 200 means that if it times out on the first attempt it will stay the default image until the next build.
+  return new Response(`<svg xmlns="http://www.w3.org/2000/svg" width="${IMAGE_WIDTH}" height="${IMAGE_HEIGHT}"/>`, {
+    status: 200,
+    headers: {
+      "content-type": "image/svg+xml",
+      "x-11ty-error-message": errorMessage,
+      "cache-control": `public, s-maxage=${ONE_WEEK}, stale-while-revalidate=${ONE_DAY}`,
+    }
+  });
+}
+
+function getEmptyJsonResponse() {
+  return new Response("{}", {
+    status: 200,
+    headers: {
+      "content-type": "application/json",
+      "cache-control": `public, s-maxage=${ONE_WEEK}, stale-while-revalidate=${ONE_DAY}`
+    }
+  })
+}
+
 export async function GET(request, context) {
   // e.g. /json/https%3A%2F%2Fwww.11ty.dev%2F/
   let requestUrl = new URL(request.url);
   let [format, url] = requestUrl.pathname.split("/").filter(entry => !!entry);
 
+  if(request.url?.endsWith("favicon.ico")) {
+    if(!format || format === "json") {
+      return getEmptyJsonResponse();
+    } else {
+      return getEmptyImageResponse("");
+    }
+  }
+
   url = decodeURIComponent(url);
 
-  if(!url || url?.endsWith("favicon.ico")) {
-    return new Response("{}", {
-      status: 200,
-      headers: {
-        "content-type": "application/json",
-        "cache-control": `public, s-maxage=${ONE_WEEK}, stale-while-revalidate=${ONE_DAY}`
-      }
-    });
+  // short circuit circular requests
+  if(isFullUrl(url) && (new URL(url)).hostname.endsWith(".generator.11ty.dev")) {
+    if(!format || format === "json") {
+      return getEmptyJsonResponse();
+    } else {
+      return getEmptyImageResponse("Circular request");
+    }
   }
 
   try {
@@ -55,15 +95,7 @@ export async function GET(request, context) {
     console.log("Error", error);
 
     if(format === "image") {
-        // We need to return 200 here or Firefox won’t display the image
-        // HOWEVER a 200 means that if it times out on the first attempt it will stay the default image until the next build.
-      return new Response(`<svg xmlns="http://www.w3.org/2000/svg" width="${IMAGE_WIDTH}" height="${IMAGE_HEIGHT}"/>`, {
-        headers: {
-          "content-type": "image/svg+xml",
-          "x-11ty-error-message": error.message,
-          "cache-control": `public, s-maxage=${ONE_WEEK}, stale-while-revalidate=${ONE_DAY}`,
-        }
-      });
+      return getEmptyImageResponse(error.message);
     }
 
     return new Response(JSON.stringify({ error: error.message }, null, 2), {
