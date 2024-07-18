@@ -75,7 +75,7 @@ export async function GET(request, context) {
     if(format === "image") {
       let image = await gen.getImage(generator, IMAGE_WIDTH);
 
-      return new Response(Buffer.from(image.body, 'base64'), {
+      return new Response(image.body, {
         headers: {
           "content-type": image.contentType,
           "x-11ty-generator": generator,

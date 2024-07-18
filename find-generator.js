@@ -96,7 +96,7 @@ class FindGenerator {
     return {
       format: format,
       contentType: stat.sourceType,
-      body: stat.buffer.toString("base64"),
+      body: stat.buffer,
     }
   }
 }

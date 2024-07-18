@@ -28,7 +28,7 @@
     "vercel": "^35.0.3"
   },
   "dependencies": {
-    "@11ty/eleventy-img": "^4.0.2",
+    "@11ty/eleventy-img": "5.0.0-beta.6",
     "cheerio": "^1.0.0-rc.12",
     "node-fetch": "^3.3.2"
   }
