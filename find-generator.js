@@ -1,5 +1,6 @@
 import * as cheerio from "cheerio";
-import EleventyImage from "@11ty/eleventy-img";
+import Image from "@11ty/eleventy-img";
+import Fetch from "@11ty/eleventy-fetch";
 
 const Generators = {
   eleventy: "https://www.11ty.dev/",
@@ -36,17 +37,30 @@ class FindGenerator {
     }
   }
 
-  async fetch() {
-    let response = await fetch(this.url);
-    let body = await response.text();
-    this.body = body;
+  async fetch(fetchOptions = {}) {
+    let opts = Object.assign({
+      type: "text"
+    }, fetchOptions);
 
-    this.$ = cheerio.load(body);
-    return body;
+    let response = await Fetch(this.url, opts);
+
+    this.$ = cheerio.load(response);
+
+    return response;
   }
 
   // <meta name="generator" content="Eleventy v2.0.0">
-  findData() {
+  findData(rawData) {
+    if(rawData) {
+      if(typeof rawData !== "string") {
+        throw new Error("Argument passed to `findData` must be an HTML string.");
+      }
+
+      this.$ = cheerio.load(rawData);
+    } else if(!this.$) {
+      throw new Error("You need to call `fetch()` first.");
+    }
+
     let metas = this.$("meta[name='generator']");
 
     for(let meta of metas) {
@@ -84,7 +98,7 @@ class FindGenerator {
   async getImage(generatorName, width) {
     let imageUrl = this.getImageUrl(generatorName);
 
-    let stats = await EleventyImage(imageUrl, {
+    let stats = await Image(imageUrl, {
       widths: [width],
       formats: ["auto"],
       dryRun: true,

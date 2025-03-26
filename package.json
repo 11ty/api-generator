@@ -1,5 +1,5 @@
 {
-  "name": "eleventy-api-generator",
+  "name": "@11ty/eleventy-find-generator",
   "version": "1.0.0",
   "description": "Find the <meta name='generator'> value from a web site URL.",
   "main": "find-generator.js",
@@ -28,6 +28,7 @@
     "vercel": "^41.4.1"
   },
   "dependencies": {
+    "@11ty/eleventy-fetch": "^5.0.2",
     "@11ty/eleventy-img": "6.0.1",
     "cheerio": "^1.0.0"
   }
