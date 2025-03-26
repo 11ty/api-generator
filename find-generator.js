@@ -39,7 +39,7 @@ class FindGenerator {
 
   async fetch(fetchOptions = {}) {
     let opts = Object.assign({
-      type: "text"
+      type: "text",
     }, fetchOptions);
 
     let response = await Fetch(this.url, opts);

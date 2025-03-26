@@ -68,7 +68,9 @@ export async function GET(request, context) {
     console.log("Fetching", url);
 
     let gen = new FindGenerator(url);
-    await gen.fetch();
+    await gen.fetch({
+      dryRun: true,
+    });
 
     let generator = gen.findData();
 
