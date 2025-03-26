@@ -1,5 +1,5 @@
-const test = require("ava");
-const FindGenerator = require("../find-generator.js");
+import test from "ava";
+import FindGenerator from "../find-generator.js";
 
 test("Get info from 11ty.dev", async t => {
   let g = new FindGenerator("https://www.11ty.dev/");
