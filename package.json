@@ -5,6 +5,9 @@
   "main": "find-generator.js",
   "type": "module",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/11ty/api-generator.git"
