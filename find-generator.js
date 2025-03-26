@@ -15,6 +15,7 @@ const Generators = {
   vuepress: "https://vuepress.vuejs.org/",
   hexo: "https://hexo.io/",
   astro: "https://astro.build/",
+  lume: "https://lume.land/",
 }
 
 class FindGenerator {
