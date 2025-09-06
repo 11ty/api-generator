@@ -27,12 +27,12 @@
   },
   "homepage": "https://github.com/11ty/api-generator#readme",
   "devDependencies": {
-    "ava": "^6.2.0",
-    "vercel": "^41.4.1"
+    "ava": "^6.4.1",
+    "vercel": "^47.0.5"
   },
   "dependencies": {
-    "@11ty/eleventy-fetch": "^5.0.2",
-    "@11ty/eleventy-img": "6.0.1",
-    "cheerio": "^1.0.0"
+    "@11ty/eleventy-fetch": "^5.1.0",
+    "@11ty/eleventy-img": "6.0.4",
+    "cheerio": "^1.1.2"
   }
 }
