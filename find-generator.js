@@ -16,6 +16,7 @@ const Generators = {
   hexo: "https://hexo.io/",
   astro: "https://astro.build/",
   lume: "https://lume.land/",
+  next: "https://nextjs.org/",
 }
 
 class FindGenerator {
@@ -66,6 +67,12 @@ class FindGenerator {
     for(let meta of metas) {
       let value = meta.attribs.content;
       return value;
+    }
+
+    // Guess for Next.js
+    let scripts = this.$("script[src^='/_next/']");
+    if(scripts.length) {
+      return "Next";
     }
 
     throw new Error("No <meta name='generator' content> element found.");
