@@ -17,6 +17,7 @@ const Generators = {
   astro: "https://astro.build/",
   lume: "https://lume.land/",
   next: "https://nextjs.org/",
+  nuxt: "https://nuxt.com/",
 }
 
 class FindGenerator {
@@ -70,9 +71,15 @@ class FindGenerator {
     }
 
     // Guess for Next.js
-    let scripts = this.$("script[src^='/_next/']");
-    if(scripts.length) {
+    let nextScripts = this.$("script[src^='/_next/']");
+    if(nextScripts.length) {
       return "Next";
+    }
+
+    // Guess for Nuxt
+    let nuxtScripts = this.$("script[src^='/_nuxt/']");
+    if(nuxtScripts.length) {
+      return "Nuxt";
     }
 
     throw new Error("No <meta name='generator' content> element found.");
