@@ -4,7 +4,25 @@
 
 A runtime service to returns the avatar of the `<meta name="generator">` used on a web site.
 
-This service only supports a few generators (at time of writing: 11ty, Gatsby, and Hugo), but I will happily merge PRs for others!
+This service currently supports:
+
+- 11ty
+- Hugo
+- Gatsby
+- WordPress
+- Silex
+- Jekyll
+- Docusaurus
+- Gridsome
+- VuePress
+- VitePress
+- Hexo
+- Astro
+- Lume
+- Next
+- Nuxt
+
+and I will happily merge PRs for others!
 
 ## Usage
 

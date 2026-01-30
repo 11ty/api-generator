@@ -13,6 +13,7 @@ const Generators = {
   docusaurus: "https://docusaurus.io/",
   gridsome: "https://gridsome.org/",
   vuepress: "https://vuepress.vuejs.org/",
+  vitepress: "https://vitepress.dev/",
   hexo: "https://hexo.io/",
   astro: "https://astro.build/",
   lume: "https://lume.land/",

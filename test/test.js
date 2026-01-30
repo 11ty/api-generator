@@ -62,3 +62,14 @@ test("Image/info for nuxt.com", async t => {
   let image = await g.getImage(content);
   t.truthy(image.body);
 });
+
+test("Image/info for vitepress.dev", async t => {
+  let g = new FindGenerator("https://vitepress.dev/");
+  await g.fetch();
+
+  let content = g.findData();
+  t.true(content.startsWith("VitePress"));
+
+  let image = await g.getImage(content);
+  t.truthy(image.body);
+});
