@@ -35,6 +35,18 @@ URLs have the formats:
 
 * `url` must be URI encoded.
 
+### Programmatic Usage
+
+```js
+import FindGenerator from "@11ty/find-generator";
+
+let g = new FindGenerator("https://www.11ty.dev/");
+await g.fetch();
+
+let content = g.findData();
+// returns "Eleventy v4.0.0"
+```
+
 ## Examples
 
 * See the “Built With” column on https://www.speedlify.dev/ssg/
