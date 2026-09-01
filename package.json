@@ -1,6 +1,6 @@
 {
   "name": "@11ty/find-generator",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Find the <meta name='generator'> value from a web site URL.",
   "main": "find-generator.js",
   "type": "module",
