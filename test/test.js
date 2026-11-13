@@ -1,75 +1,76 @@
-import test from "ava";
+import test from "node:test";
+import assert from "node:assert/strict";
 import FindGenerator from "../find-generator.js";
 
-test("Get info from 11ty.dev", async t => {
+test("Get info from 11ty.dev", async () => {
   let g = new FindGenerator("https://www.11ty.dev/");
   await g.fetch();
 
   let content = g.findData();
-  t.true(content.startsWith("Eleventy"));
+  assert.ok(content.startsWith("Eleventy"));
 });
 
-test("Get image from 11ty.dev", async t => {
+test("Get image from 11ty.dev", async () => {
   let g = new FindGenerator("https://www.11ty.dev/");
   await g.fetch();
   let content = g.findData();
-  t.true(content.startsWith("Eleventy"));
+  assert.ok(content.startsWith("Eleventy"));
 
   let image = await g.getImage(content);
-  t.truthy(image.body);
+  assert.ok(image.body);
 });
 
-test("Image/info for gatsbyjs.com", async t => {
+test("Image/info for gatsbyjs.com", async () => {
   let g = new FindGenerator("https://www.gatsbyjs.com/");
   await g.fetch();
 
   let content = g.findData();
-  t.true(content.startsWith("Gatsby"));
+  assert.ok(content.startsWith("Gatsby"));
 
   let image = await g.getImage(content);
-  t.truthy(image.body);
+  assert.ok(image.body);
 });
 
-test("Image/info for gohugo.io", async t => {
+test("Image/info for gohugo.io", async () => {
   let g = new FindGenerator("https://gohugo.io/");
   await g.fetch();
 
   let content = g.findData();
-  t.true(content.startsWith("Hugo"));
+  assert.ok(content.startsWith("Hugo"));
 
   let image = await g.getImage(content);
-  t.truthy(image.body);
+  assert.ok(image.body);
 });
 
-test("Image/info for nextjs.org", async t => {
+test("Image/info for nextjs.org", async () => {
   let g = new FindGenerator("https://nextjs.org/");
   await g.fetch();
 
   let content = g.findData();
-  t.true(content.startsWith("Next"));
+  assert.ok(content.startsWith("Next"));
 
   let image = await g.getImage(content);
-  t.truthy(image.body);
+  assert.ok(image.body);
 });
 
-test("Image/info for nuxt.com", async t => {
+test("Image/info for nuxt.com", async () => {
   let g = new FindGenerator("https://nuxt.com/");
   await g.fetch();
 
   let content = g.findData();
-  t.true(content.startsWith("Nuxt"));
+  assert.ok(content.startsWith("Nuxt"));
 
   let image = await g.getImage(content);
-  t.truthy(image.body);
+  assert.ok(image.body);
 });
 
-test("Image/info for vitepress.dev", async t => {
+test("Image/info for vitepress.dev", async () => {
   let g = new FindGenerator("https://vitepress.dev/");
   await g.fetch();
 
   let content = g.findData();
-  t.true(content.startsWith("VitePress"));
+  assert.ok(content.startsWith("VitePress"));
 
   let image = await g.getImage(content);
-  t.truthy(image.body);
+  assert.ok(image.body);
 });

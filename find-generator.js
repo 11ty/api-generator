@@ -1,6 +1,7 @@
 import * as cheerio from "cheerio";
 import Image from "@11ty/eleventy-img";
 import Fetch from "@11ty/eleventy-fetch";
+import { isSSRFSafeURL } from "ssrfcheck";
 
 const Generators = {
   eleventy: "https://www.11ty.dev/",
@@ -30,14 +31,11 @@ class FindGenerator {
     }
   }
 
+  // Rejects invalid urls, local paths, non-http(s) protocols, and literal
+  // private/reserved addresses. `autoPrependProtocol` is off so a bare
+  // `example.com` stays invalid, the way it was before.
   isFullUrl(url) {
-    try {
-      new URL(url);
-      return true;
-    } catch(e) {
-      // invalid url OR local path
-      return false;
-    }
+    return isSSRFSafeURL(url, { autoPrependProtocol: false });
   }
 
   async fetch(fetchOptions = {}) {
